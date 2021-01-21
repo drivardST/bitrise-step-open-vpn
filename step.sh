@@ -64,8 +64,9 @@ EOF
     echo ""
 
     echo "Run openvpn"
-   
-      sudo openvpn --compress --client --dev tun --proto ${proto} --remote {$host} {$port} --resolv-retry infinite --nobind --persist-key --persist-tun --comp-lzo --verb 3 --ca ca.crt --cert client.crt --key client.key --cipher AES-256-CBC --data-ciphers AES-256-GCM:AES-128-GCM:AES-256-CBC&
+         sudo openvpn --client --dev tun --proto ${proto} --remote ${host} ${port} --resolv-retry infinite --nobind --persist-key --persist-tun --comp-lzo --verb 3 --ca ca.crt --cert client.crt --key client.key > $log_path 2>&1 &
+
+#      sudo openvpn --compress --client --dev tun --proto ${proto} --remote {$host} {$port} --resolv-retry infinite --nobind --persist-key --persist-tun --comp-lzo --verb 3 --ca ca.crt --cert client.crt --key client.key --cipher AES-256-CBC --data-ciphers AES-256-GCM:AES-128-GCM:AES-256-CBC&
 
     sleep 10
     #ping github server
