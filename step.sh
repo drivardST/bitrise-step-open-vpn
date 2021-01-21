@@ -67,6 +67,11 @@ EOF
    
       sudo openvpn --compress --client --dev tun --proto ${proto} --remote {$host} {$port} --resolv-retry infinite --nobind --persist-key --persist-tun --comp-lzo --verb 3 --ca ca.crt --cert client.crt --key client.key --cipher AES-256-CBC --data-ciphers AES-256-GCM:AES-128-GCM:AES-256-CBC&
 
+    sleep 10
+    #ping github server
+    sudo ping -t 5 10.181.75.40
+    
+    sleep 10
     
     echo "Done"
     echo ""
